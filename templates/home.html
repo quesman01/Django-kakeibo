@@ -1,0 +1,30 @@
+<!-- home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>経費</h1>
+<p>総経費: {{ total_expenses }}円</p>
+<a href="{% url 'add_expense' %}" class="btn btn-info mb-3">追加経費</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>タイトル</th>
+            <th>金額</th>
+            <th>分類</th>
+            <th>日時</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.title }}</td>
+            <td>{{ expense.amount }}</td>
+            <td>{{ expense.category }}</td>
+            <td>{{ expense.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
